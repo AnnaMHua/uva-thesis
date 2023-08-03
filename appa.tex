@@ -1,4 +1,80 @@
-\chapter{Some Kind of Appendix}
+\chapter{K-theory examples}
+\section{Point}
+\section{$S^0$}
+\section{$S^1$}
+\section{Torus}
 
+Consider a two-dimensional torus $\mathbb{T}^2$, it is a product of two circle: $\mathbb{T}^2 = S^1 \times S^1 $. Following the long exact sequence of cohomology
+\begin{equation}
+    0\rightarrow \Tilde{K}(X\wedge Y)\rightarrow
+    \Tilde{K}(X\times Y)\rightarrow \Tilde{K}(X\otimes Y)\rightarrow 0
+\end{equation}
+and $$\Tilde{K}(X \times Y)\cong \Tilde{K}(X \wedge Y)\oplus \Tilde{K}(X)\oplus\Tilde{K}(Y)$$,
+we have \begin{align}
+    \Tilde{K}(\mathbb{T}^2) &\cong \Tilde{K}(S^1 \times S^1)\\
+    &\cong \Tilde{K}(S^1 \wedge S^1)\oplus \Tilde{K}(S^1)\oplus\Tilde{K}(S^1)\\
+    &\cong\Tilde{K}(S^2)\oplus0\oplus0\\
+    &\cong \mathbb{Z}
+\end{align}
 \newpage
 \cleardoublepage
+
+\chapter{Double group of $C_{4v}$}
+
+We are studying spinful system so we must introduce another rotation R at $j=1/2$, where $j$ represent spin-1/2. The new double group usually is the direct product of $C_{4v}$ and $\{E, R\}$, however, things are different when we have $C_2$ symmetry in the group. The number of group elements is doubled but the number of conjugacy class is not.
+
+It follows the following two statements:
+
+(1) If $C_n$ denotes a rotation by angle $2\pi n/n$, the group elements $C_n$ and $RC_n$ belong in different classes unless n = 2.
+
+(2) For n = 2, $RC_2$ is in the same class as $C_2$ if, and only if, there is another twofold axis of rotation that is perpendicular to the one in question.
+
+In $C_{4v}$, the 5 conjugacy classes contain 3 $C_2$ in different directions and there always exits a perpendicular $C_2$ rotation axis. Therefore, the total number of conjugacy class $p=7$
+
+So there are 7 irreducible representations, 5 of them are from $C_{4v}$ the left 2 are double group representations. 
+
+Steps to determine the character table
+(1) At first, using the properties of double group: Any irreducible representation of the original group is also an irreducible representation of the double group, with the same set of characters $\chi(CR_k)$ = $\chi(R_k)$.
+(2)Besides,we have
+the following condition for the dimensionality of 2 additional representation:
+
+$$\sum l_i^2=h=8$$
+$$l_1^2+l_2^2=8$$
+so we conclude $l_c=2$, $l_D=2$.
+
+(2)For the 2 new representations the characters $\chi(RX)$ = -$\chi(X)$.
+
+\begin{table}[h]
+\begin{tabular}{l|lllllll}
+             & 1 & $(C_{4z}^2$, $RC_{4z}^2)$ & $(C_{2x}$, $RC_{2x})$ & $(C_{2x}C_{4z}$ & $C_{4z})$ & R  & $RC_{4z}$ \\ \hline
+$A_1$        & 1 & 1                       & 1                   & 1              & 1        & 1  & 1         \\
+$A_2$        & 1 & 1                       & -1                  & -1             & 1        & 1  & 1         \\
+$B_1$        & 1 & 1                       & 1                   & -1             & -1       & 1  & -1        \\
+$B_2$        & 1 & 1                       & -1                  & 1              & -1       & 1  & -1        \\
+E            & 2 & -2                      & 0                   & 0              & 0        & 2  & 0         \\
+$C$          & 2 &                         &                     &                &          &    &           \\
+D=$\Gamma_6$ & 2 &                         &                     &                &          &  &          
+\end{tabular}
+\caption{Step (2)}
+\end{table}
+
+(3) Finding characters for a rotation by an angle of $\alpha$ with momentum $j$:
+$$\chi_j(\alpha)=\frac{\sin{(j+1/2)\alpha}}{\sin{\alpha/2}}$$
+
+\begin{table}[h]
+\begin{tabular}{l|lllllll}
+             & 1 & $C_{4z}^2$, $RC_{4z}^2$ & $C_{2x}$, $RC_{2x}$ & $C_{2x}C_{4z}$, $RC_{2x}C_{4z}$ & $C_{4z}$    & R  & $RC_{4z}$   \\ \hline
+$A_1$        & 1 & 1                       & 1                   & 1                               & 1           & 1  & 1           \\
+$A_2$        & 1 & 1                       & -1                  & -1                              & 1           & 1  & 1           \\
+$B_1$        & 1 & 1                       & 1                   & -1                              & -1          & 1  & -1          \\
+$B_2$        & 1 & 1                       & -1                  & 1                               & -1          & 1  & -1          \\
+E            & 2 & -2                      & 0                   & 0                               & 0           & 2  & 0           \\
+$C$          & 2 & 0                       & 0                   & 0                               & $-\sqrt{2}$ & -2 & $\sqrt{2}$  \\
+D=$\Gamma_6$ & 2 & 0                       & 0                   & 0                               & $\sqrt{2}$  & -2 & $-\sqrt{2}$
+\end{tabular}
+\caption{Step (3)}
+\end{table}
+\newpage
+\cleardoublepage
+
+

@@ -1,10 +1,431 @@
-\chapter{Data Analysis}
-\subsection{VDC}
-\subsection{GEM detector Data Analysis}
-\subsubsection{current GEM apparatus}
-\subsubsection{GEM detector data structure}
-\subsubsection{GEM detector alignment}
-\subsubsection{GEM detector performance, and efficiency change via the time}
-\subsection{$Q^2$ calculation}
-\subsection{$r$ calculation with the data}
+  \chapter{Density wave and topological phases}
+\section{ CDW and topological semimetal}
+\section{Weak TI}
+
+gapless line split and merged
+
+
+
+\section{}
+The existence of charge density wave breaks the $T_{1/2}$ translation symmetry along $s$ direction while still preserving $C_4$ and time reversal symmetry. We need to extend our spinless tight-binding model in (\ref{eq:TBmodel}) to an enlarged unit cell with four chains per unit cell, which are labelled by $\sigma = A, B$, $\mu = \mathrm{I}, \mathrm{II}$ as shown in Fig\ref{fig:enlarged}(a). 
+Now we use the rotated coordinate of $r$ and $s$, and inter unit cell spacing of $\sqrt{2} a$ to accommodate the doubled unit cell area, and $u_\mathrm{I} = \tilde{u}_\mathrm{II} = u_1$ , $u_\mathrm{II} = \tilde{u}_\mathrm{I} = \tilde{u_1}$ as before. 
+
+Enlarging the unit cell in real space causes the Brillouin zone in $xy$-plane folding into half of its area, coinciding $Z$ and $A$ points in the momentum space (Fig.\ref{fig:enlarged}(b)). The $k \cdot p$ Hamiltonian for the enlarged unit cell in momentum space near $(0, 0, \frac{\pi}{c})$ in reduced BZ is now
+\begin{eqnarray}
+    &H (\delta k_r, \delta k_s, \frac{\pi}{c} + \delta k_z ) = - \hbar v \delta k_z \tau_y + (u_1 + \tilde{u_1}) \delta k_z \sigma_x \tau_y \nonumber \\ &- (u_1 - \tilde{u_1}) \delta k_r \delta k_s \sigma_x \mu_z \tau_x + \frac{1}{2} u_2 (\delta k_r^2 - \delta k_s^2) \mu_z \tau_z .
+\end{eqnarray}
+From the argument in the previous section, we see that the Dirac points formed by stacking $Z$ and $A$ points is protected by symmetry as the representations differ at these points in the spinless representation, and this enforces the  mass terms to be spin-orbit coupled. There are four mass terms in the weak coupled limit where $u_1$ and $\tilde{u}_1$ are negligible compared to the coupling $\hbar v$ along each chain: 
+\begin{equation}
+\begin{split}
+\Gamma_1=\frac{1}{2}\sigma_z\mu_y\tau_z(s_y+s_x)+\frac{1}{2}\sigma_y\tau_z\mu_x(s_x-s_y)\\
+\Gamma_2=\frac{1}{2}\sigma_y\mu_z\tau_x(s_y-s_y)+\frac{1}{2}\sigma_y\tau_x(s_x+s_y)\\
+\Gamma_3 =\frac{1}{2}\sigma_z\mu_y\tau_z(s_y-s_x)+\frac{1}{2}\sigma_y\tau_z\mu_x(s_x+s_y) \\
+\Gamma_4= \frac{1}{2}\sigma_y\mu_z\tau_x(s_x+s_y)+\frac{1}{2}\sigma_y\tau_x(s_x-s_y)
+\end{split}
+\end{equation}
+{\color{blue}The mass terms fall into two groups $M_1=(\Gamma_1,\Gamma_2)$ and $M_2=(\Gamma_3,\Gamma_4)$. Two mass terms commute when they are from the same group and anticommute when they are from different groups.}
+{\color{red}(proof T1/2 symmetry breaking by showing T1/2 can send one mass term(or combination) to another)}
+
+%(cite Chen Fang PRL \cite{fourfoldHOTI})
+
+% k.p Hamiltonian mass terms for the Dirac fermion 
+% e.g. for dHz, it immediately gives a gap. (Maybe this in next few subsections)
+
+
+%\subsection{%Density waves in the tight-binding model}
+
+%First, describe the model without 1st and 2nd neighbor hoppings. 2 helical pairs per chain, 4 chain per unit cell.
+
+%Density wave = translation breaking "dimerization", i.e. at $k_z=\pi$, a quasi-2D version of the Su-Schriffer-Heeger model. Group helical models together in some pattern then introduce energy gap by backscattering. 
+
+
+\begin{figure}[htbp]
+    \centering\includegraphics[width=0.5\textwidth]{helicalcoupling.png}
+    \caption{(a) The spinful, enlarged unit cell hosts 2 pairs of helical modes per chain, and 4 chains per unit cell. $\delta H_{+}$ intra-unit cell coupling is shown here, which backscatters half of the degrees of freedom in a unit cell. (b) A topological insulating phase can be constructed by using $\delta H_+$ and $\delta H_-$ as intra-unit cell and inter-unit cell couplings respectively, and vice versa. }\label{fig:intra}
+\end{figure}
+
+\subsection{spinful model}
+The spinful, enlarged unit cell version of the tight-binding model without the first and second nearest hopping ($\hat{H_2}$ and $\hat{H_3}$ respectively) hosts two helical pairs per chain, and 4 chains per unit cell, as shown in Fig \ref{fig:intra}(a). Each helical mode is labeled by its chirality $\tau=\times, \cdot$ and spins $s=\uparrow,\downarrow$. The Bloch Hamiltonian of fully decoupled chains is 
+\begin{equation}\label{eq:H1}
+    H_1(k_z)=\hbar v/c\left[\sin{(k_zc)}\tau_y +(1+\cos{(k_zc)})\tau_x\right]
+\end{equation}
+. It preserves $C_4$, time reversal symmetry and translation along $x$ direction :
+\begin{equation}
+\begin{split}
+C_4=e^{i(\pi/4)s_z}\begin{pmatrix}
+0 &0 &0&1\\
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0
+\end{pmatrix}_{\sigma\mu},\quad \mathcal{T}=is_yK\\
+T_x=\begin{pmatrix}
+0&0&1&0\\
+0&0&0&e^{ik_sa/\sqrt{2}}\\
+e^{i(k_s+k_r)a/\sqrt{2}} &0&0&0\\
+0 & e^{ik_ra/\sqrt{2}} &0&0
+\end{pmatrix}_{\sigma\mu}
+\end{split}
+\end{equation}
+The $\sigma\mu$ space is spanned by the basis $(c_{A,\mathrm{I}},c_{A,\mathrm{II}},c_{B,\mathrm{I}},c_{B,\mathrm{II}})^T$. 
+
+The tight binding mass terms, which give rise to the charge density wave, can be systematically constructed through backscattering of helical modes within each unit cell and between unit cells. It is possible to backscatter half of the helical modes circled by grey boxes (Fig\ref{fig:intra}.a) in each unit cell and have a gapping term $\delta H^+=\delta H_I^++\delta H_{\mathrm{II}}^+ $, where
+\begin{equation}
+\begin{split}
+    \delta H_I^+ =& \frac{m}{4}\sigma_y(1+\mu_z)(\tau_xs_x+\tau_zs_y)
+    \\
+    \delta H_{\mathrm{II}}^+ =&C_4\delta H_I^+C_4^{-1}
+\end{split}
+\end{equation}
+while the other four helical pairs can be backscattered by another term $\delta H^-=\delta H_I^-+\delta H_{\mathrm{II}}^-  $, where \begin{equation}
+\begin{split}
+ \delta H_I^- =& \frac{m}{4}\sigma_y(1+\tau_z)(\mu_xs_x-\mu_zs_y)
+    \\
+    \delta H_{\mathrm{II}}^- =&C_4\delta H_I^+C_4^{-1}
+\end{split}
+\end{equation}Combining $\delta H^+$ and $\delta H^-$ together, all helical modes will be backscattered and the model of decoupled chains will open a gap.  
+
+\subsection{topological phases}
+We can construct a mass term using $\delta H^+$ as intra-cell hopping and $\delta H^-$as inter-cell hopping, as shown in Fig.\ref{fig:intra}(b), to fully open a gap of Dirac points in the Brillouin zone in the weak $u_1$, $\tilde{u}_1$ and $u_2$ limit:
+\begin{equation}
+    \delta H_z = \delta H^+-T_x^{-1}\delta H^- T_x. \label{z_gapping_nontrivial}
+\end{equation}{\color{red}(describe hinge state, disclination (2 types),figures)}
+
+{\color{red} (trivial phase in spin z, needs more calculation)} We can also construct another charge density wave mass term
+\begin{equation}
+    \delta H_{trivial} = \delta H^++\delta H^- \label{trivial_gapping}
+\end{equation}
+without any inter-unit cell coupling. This will correspond to trivial phase without leaving behind hinge states, as shown in Fig (dimerization pic). {\color{red}(draw dimerization, impossible to have Hinge state)}
+
+\begin{figure}[htbp]
+    \centering\includegraphics[width=0.5\textwidth]{xyintra.png}
+    \caption{xyintra}\label{fig:xyintra}
+\end{figure}
+
+{\color{red}(Check)} The backscattering process can also happen to spins in $xy$-plane.  Fig.\ref{fig:xyintra} shows $\delta H^+_{xy}$ and $\delta H^-_{xy}$ couple different pairs of helical modes and we have ({\color{red} Clarify the difference between $\delta H_{xy}$ and $\delta H_{\pm}$ here}): 
+\begin{equation}
+\begin{split}
+    \delta H_{xy}^{\pm} = \frac{m_{\pm}}{4} (2 \sigma_x \tau_z \pm \sigma_y \tau_x (s_x - s_y) \pm \sigma_y \mu_z \tau_x (s_x + s_y)).
+\end{split}
+\end{equation}
+Now we can introduce $\delta H^+_{xy}$ and $\delta H^-_{xy}$ both as intra-cell coupling with same strength $m$  so that all enlarged unit cells are decoupled from each other. The gapping term 
+\begin{equation}
+    \delta H_{xy}^{trivial} =\delta H_{xy}^++\delta H_{xy}^-= m\sigma_x\tau_z
+\end{equation}
+ doesn't involve SOC, so it will open a gap only in strong limit and end up with a topological trivial phase. When we gradually turn on $\delta H_{xy}^{trivial}$, Dirac point will separate into four Weyl points and they will eventually reach the boundary of BZ, form a nodal line, and then annihilate. {\color{red} no hinge state (is nodal line protected?)}
+
+However, consider another case when both intra-cell hopping and inter-cell hopping are described by $\delta H^+$, the translation symmetry $T_{x}$ would be recovered. The bulk is still fully gapped by 
+\begin{equation}
+    \delta H_{xy}^{topo}=\delta H^+_{xy}+T_x^{-1}\delta H^+_{xy}T_x.
+\end{equation} In the x and y direction of an open geometry , this system can be viewed as stacking layers of 2D QSH and the boundary modes of 2D QSH are weakly coupled with nearest neighbour hopping, as shown in Figure \ref{fig:weakti}(a). There will be surface states on xz and yz plane in Figure \ref{fig:weakti}(b), thus this system is a weak TI.  {\color{red} (draw weak TI lattice, surface BZ + dirac points)}
+
+\begin{figure}[htbp]
+    \centering\includegraphics[width=0.5\textwidth]{WeakTI.png}
+    \caption{(a) The weak TI phase as a stack of 2D QSH layers when the weakly coupled chain model is gapped by $\delta H_{xy}=\delta H^+_{xy}+T_x^{-1}\delta H^+_{xy}T_x$. (b) The surface Brillouin Zone for open geometries terminated in y- and x-directions, respectively.}\label{fig:weakti}
+\end{figure}
+
+
+%The spinful, enlarged unit cell version of the tight-binding model  without the first and second nearest hopping ($\hat{H_2}$ and $\hat{H_3}$ respectively) hosts two helical pairs per chain, and 4 chains per unit cell. Charge density wave occurs in this model when there is translation symmetry breaking via dimerization, i.e., our spinful wire model can realize a quasi-two dimensional version of the Su-Schrieffer-Heeger (SSH) model. The strategy is to group the helical modes and introduce energy gap in the band via backscattering term.
+
+%Tight-binding "mass" terms:
+%(i) intra- or inter- cell terms
+%(ii) dHxy, or dHz
+%(iii) These are gapping terms only in the strong limit when their intra-chain hopping strength along kz are much stronger than the inter-chain hoppings.
+
+
+
+
+
+%The tight binding mass terms can be systematically constructed from inter- and intra-unit cell hoppings for the spinful chain model with only hopping along the chain, and tune to different topological insulating phases with helical hinge modes. The 8-band intra-unit cell backscattering terms labelled by $\tau_y = \pm 1$, $s_x = \rightarrow, \leftarrow$ are
+%\begin{eqnarray}
+    %\delta H &=& m \sum_{r} ( c_{\mathbf{r}}^{A,+,\leftarrow,\dagger} c_{\mathbf{r}}^{B,-,\leftarrow} + c_{\mathbf{r}}^{A,-,\rightarrow,\dagger} c_{\mathbf{r}}^{B,+,\rightarrow} + \mathrm{h.c.}) \nonumber \\ &=& m \sum_{\mathrm{r}, \sigma\sigma', \tau\tau', ss'} c_{\mathrm{r}}^{\sigma, \tau, s, \dagger} M_{\sigma \sigma', \tau \tau', s s'} c_{\mathrm{r}}^{\sigma', \tau', s'} , \text{ with } \nonumber \\ M &=& \frac{1}{2} \left(\sigma_x \tau_z - \sigma_y \tau_x s_x \right) , \label{mass8band}
+%\end{eqnarray}
+%where in the first two terms in the first line are time reversal invariant pair, and the mass term is expressed in $s_z$ and $\tau_z$ basis in the second line. 
+
+%Extending to 16-band model with $\mu = \mathrm{I}, \mathrm{II}$, we write $\delta H = \delta H_{\mathrm{I}} + \delta H_{\mathrm{II}}$, $\delta H_{\mathrm{I}} = \delta H P_{\mathrm{I}} = \frac{1}{2} (\sigma_x \tau_z - \sigma_y \tau_x s_x ) \frac{1}{2} (1 + \mu_z)$ and $\delta H_{\mathrm{II}} = C_4 \delta H_{\mathrm{I}} C_4^{-1}$. We can also construct (\ref{mass8band}) with flipping spin orientation. These two possibilities in the full 16-band model are
+%\begin{equation}
+    %\delta H_{\pm} = \frac{m_{\pm}}{4} (2 \sigma_x \tau_z \pm \sigma_y \tau_x (s_x - s_y) \pm \sigma_y \mu_z \tau_x (s_x + s_y))
+%\end{equation}
+%Different degrees of freedom can then be gapped by using different combinations of $\delta H_{\pm}$, and inter-unit cell mass terms are constructed via the translation operator $T_x (k) \delta H_{\pm} T_{x}^{-1}$.
+
+%The backscattering term $m_4$ near $k_z=\pi$ plane is
+%\begin{equation}
+    %m_4= \frac{1}{2}\sigma_y\mu_z\tau_x(s_x+s_y)+\frac{1}{2}\sigma_y\tau_x(s_x-s_y)
+%\end{equation}
+
+%\subsection{%Symmetry protected topologies}
+
+{\color{red} Draw the "dimerization" diagrams.}
+
+%It is also possible to gap out all helical modes while preserving translation along $x$ and $y$ direction. Each chain can be viewed as a boundary of 2D quantum spin hall stacking along $x$ and $y$ direction. If we introduce the same backscattering term between nearest neighbour chains in both direction, will remain as an 8-band model and the bulk will be fully gaped by  
+%\begin{equation}
+%    \delta H_{xy}= \sum_{\mathrm{r}} \psi_{\uparrow,\mathrm{r}+a_x}^\dagger \psi_{\downarrow, \mathrm{r}} - \psi_{\downarrow, \mathrm{r}+a_x}^\dagger \psi_{\uparrow, \mathrm{r}} +h.c. \label{xy_gap_tight_binding}
+%\end{equation}
+%and there will be surface state exist in $xy-$plane. 
+
+Once we turn on the weak but nonzero coupling strengths for nearest and next-nearest neighbour hopping terms ($\hat{H}_2$ and $\hat{H}_3$ respectively), the Dirac point at $k_z = \frac{\pi}{c}$ plane will not gap out immediately under $\delta H_{trivial}$ in (\ref{trivial_gapping}) and $\delta H_{xy}$ {\color{red}(Check)}. However, upon increasing the strength of the gapping terms, the Weyl points will move across the Brillouin zone and eventually merge and annihilate in both cases. {\color{red}(Describe the Weyl point motion for each individual case. Include numerical evidence/animation in supplementary material/movie)}
+
+
+
+
+% Introduction:
+% \begin{itemize}
+%     \item apparatus
+%     \item why we need to Optics 
+%     \item how to do optics (linear regression))
+%     \item a brief of the result
+% \end{itemize}
+
+
 % \lipsum[1-20]
+% \subsubsection{Linear Regression and mathematics approximation}
+
+
+
+
+% \subsection{}section{feature selection}
+
+% \subsubsection{general consideration in regression}
+
+% \subsubsection{features in regression}
+
+% \subsubsection{LASSO feature reduction regression}
+
+% \subsubsection{ridge feature reduction regression}
+
+% \subsection{autoML and more}
+
+% \section{Momentum optimization}
+
+% \section{Regression Result validation}
+
+% \subsection{carbon result check}
+
+% \subsubsection{first, second, third momentum check}
+
+% \section{momentum reconstruction}
+
+% \section{scattered angle reconstruction and correction}
+
+% \section{a second thought/attempt on the regression}
+
+% \subsection{another more complicated model}
+
+
+
+%\chapter{BULK TOPOLOGICAL INVARIANTS}
+% \lipsum[1-20]
+\section{Bulk Topological invariants} 
+
+We can use a set of symmetry indicators $\{z_8| \nu_1 \nu_2 \nu_3\}$ to capture the topology of our tight-binding model protected by time reversal and fourfold rotation symmetry \cite{MappingSymmetryTopology}. As the $z_8$ and weak indices are robust against inversion symmetry breaking, we adiabatically deform our model Hamiltonian to an inversion symmetric model without gap closing while preserving other symmetries in the model. The $z_8$ and weak indices can then be read off from formulae found in \cite{MappingSymmetryTopology, Fu_Kane_07}. 
+
+The inversion symmetric toy Hamiltonian in $k$-space is
+\begin{equation}\label{eq:inversionXY}
+    H_p = H_1' + \delta H_{xy}^{topo}
+\end{equation} 
+where $H_1'=\frac{\hbar v}{c}\left[\sin{(k_zc)}\tau_y +(1+\cos{(k_zc)})\tau_z\right]$ deforms from Eq.(\ref{eq:H1}). The emergent inversion operator is 
+\begin{equation*}
+P(\mathbf{k})=\tau_z\begin{pmatrix}
+e^{-ik_xa} & 0\\
+0 & e^{-i2k_xa-ik_ya}
+\end{pmatrix}_{\mu}
+\end{equation*}
+and the translation symmetry is recovered. Therefore, the set of symmetry indicators $\{z_8|z_{2x},z_{2y},z_{2z}\}$ for this model can be induced from space group 83 $P4/m$\cite{MappingSymmetryTopology}. 
+
+\subsection{$\mathbb{Z}_2$ strong and weak indices}
+
+%The topological mass term $\delta H_{xy}$ remains gapped throughout the deformation, with $H(s) = s*H_0^{'} + (1-s)*H_0 + \delta H_{xy}$, where $s \in [0,1]$, $H_0 = - \frac{\hbar v}{c} (1 + \cos (k_z c) ) \tau_x + \frac{\hbar v}{c} \sin(k_z c) \tau_y$, and $H_0^{'} = - \frac{\hbar v}{c} (1 + \cos (k_z c) ) \tau_z + \frac{\hbar v}{c} \sin(k_z c) \tau_y$, while turning off the inversion breaking Weyl physics coupling terms $u_1$, $\tilde{u}_1$ and $u_2$ that does not affect the resulting gapped insulating phases from the Dirac mass terms. The inversion operator in this case is $P = \sigma_x \tau_z$.
+The $\mathbb{Z}_2$ indicators are the weak topological index and can obtained from the Fu-Kane formula \cite{Fu_Kane_07}. Owing to the $C_4$ rotation symmetry, the $\mathbb{Z}_2$ weak index in $xz-$surface $\nu_1$ equals the $\mathbb{Z}_2$ index in $yz-$surface $\nu_2$. The time reversal invariant momentum (TRIM) is characterized by primitive reciprocal lattice vector $\mathbf{b_i}$, and is given by $\Gamma_{i = (n_1 n_2 n_3)} = (n_1 \mathbf{b_1} + n_2 \mathbf{b_2} + n_3 \mathbf{b_3})/2)$ and $n_i = 0, 1 \mod 2$. The weak indices can be then deduced from the product of 4 parity eigenvalues $\delta_i$ for which the TRIM $\gamma_i$ resides on the same plane
+\begin{equation}
+    (-1)^{\nu_{k}} = \prod_{n_k = 1, n_{j \neq k} = 0, 1 } \delta_{i = ( n_1 n_2 n_3 )} ,
+\end{equation}
+while the strong index is $(-1)^{\nu_0} = \prod_{i=1}^8 \delta_i$. The tight binding model in Eq(\ref{eq:inversionXY}) is a weak TI with indices $\{\nu_0 | \nu_1 \nu_2 \nu_3 \} = \{0 | 110\}$.
+
+\subsection{$z_8$ indicator}
+
+The $\mathbb{Z}_8$ indicator for $P4/m$ is given by
+\begin{equation}\label{eq:z8}
+    z_8 = \frac{3 n_{3/2}^+ - 3 n_{3/2}^- - n_{1/2}^+ + n_{1/2}^-}{2} \mod 8 ,
+\end{equation}
+where $n^{\pm}$ denotes the number of Kramer pairs with parity $\pm 1$ respectively, and the subscript indicates the spin eigenvalue under the $C_4$ rotation symmetry. The tight binding model in Eq(\ref{eq:inversionXY}) exhibits symmetry indicator $z_8 = 4 \mod 8$ and the values of $n^{\pm}$ at each high symmetry point are given in Table \ref{SymmetryIndicator}. % and \ref{SymmetryIndicator2}.
+
+However,the $\mathbb{Z}_8$ symmetry indicator for our model above is origin dependent. If we take instead the Dirac topological mass term to be half-translated along the direction given by weak indices, i.e. $(110)$,
+\begin{equation}\label{eq:shift_origin}
+    H_p' = H_1'+T_{1/2}^{xy}\delta H_{xy}^{topo}T_{-1/2}^{xy}
+\end{equation} the symmetry indicator $z_8$ computation from Table \ref{SymmetryIndicatorTranslated} is shown to be $z_8 = 0 \mod 8$. %and \ref{table:shift_origin}
+
+There is a topological phase transition between $H_0 + \delta H_{xy}$ and $H_0 + (T_{1/2}^{r})^{-1} \delta H_{xy} T_{1/2}^r$. If we take the intra-wire hopping term $H_0$ to be the dominant term, $H_1 = \delta H_{xy}$ and $H_2 = (T_{1/2}^{r})^{-1} \delta H_{xy} T_{1/2}^r$, there will be a gapless point when $H_1$ and $H_2$ are equal in strength, i.e., the model $H_c = H_0 + H_1 + H_2$ has a gapless point at $(\frac{\pi}{a'}, \frac{\pi}{a'}, \frac{\pi}{c})$, where $a'$ is the enlarged unit cell lattice spacing in the $xy/rs$ plane. The lowest order $k \cdot p$ Hamiltonian for the $H_0 + H_1 + H_2$ term is linear 
+\begin{equation}
+\begin{aligned}
+\delta H_{xy}^{topo} = &  \tau_z\mu_z (\cos (k_x)-\cos (k_y))+
+\tau_z(\cos (k_x)+\cos (k_y))\\&+\tau
+_x\mu_zs_x \sin (k_x)+ \tau_xs_x \sin
+(k_x)\\&+ \tau_x\mu_zs_y\sin (k_y)-
+\tau_xs_y \sin (k_y)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\delta H_{xy}^{topo2} = &  -\tau_z\mu_z (\cos (k_x)-\cos (k_y))+
+\tau_z(\cos (k_x)+\cos (k_y))\\&-\tau
+_x\mu_zs_x \sin (k_x)+ \tau_xs_x \sin
+(k_x)\\&- \tau_x\mu_zs_y\sin (k_y)-
+\tau_xs_y \sin (k_y)
+\end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+    H_c(u,u)=&\frac{hv}{c}(1+\cos(k_zc))\tau_z+\frac{hv}{c}\sin(k_zc)\tau_y\\
+&+u(\cos(k_x)+\cos(k_y))\tau_z\\
+&+u\tau_xs_x\sin(k_x) -u\tau_xs_y\sin(k_y)
+ ,\end{aligned}
+\end{equation}
+The $H_c$ at topological phase transition near the gapless $R=(\pi,0,\pi)$ is
+\begin{equation}         H_c(R+k)=-hv\tau_yk_z-u(\tau_xs_xk_x+\tau_xs_yk_y) .
+\end{equation}
+
+ \begin{table}[h]
+ \begin{tabular}{c|cccc}
+   & $n(E_{\frac{1}{2}g})$ & $n(E_{\frac{3}{2}g})$ & $n(E_{\frac{1}{2}u})$ & $n(E_{\frac{3}{2}u})$ \\
+ \hline 
+ $\Gamma = (0,0,0)$ & 1 & 1 & 1 & 1 \\
+ $Z = (0,0,\pi)$ & 0 & 0 & 2 & 2 \\
+ $M = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},0)$ & 1 & 1 & 1 & 1 \\
+ $A = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},\pi)$ & 0 & 0 & 2 & 2 \\ 
+ $X = (\frac{\pi}{\sqrt{2}},0,0)$ & 2 & - & 2 & - \\
+ $R = (\frac{\pi}{\sqrt{2}},0,\pi)$ & 2 & - & 2 & -
+ \end{tabular}
+ \caption{The values of the symmetry indicator $n$ at various high symmetry points. (16-band inversion symmetric model eq.(\ref{eq:inversionXY}))} \label{SymmetryIndicator}
+ \end{table}
+ 
+ \begin{table}[h]
+ \begin{tabular}{c|cccc}
+   & $n(E_{\frac{1}{2}g})$ & $n(E_{\frac{3}{2}g})$ & $n(E_{\frac{1}{2}u})$ & $n(E_{\frac{3}{2}u})$ \\
+ \hline 
+ $\Gamma = (0,0,0)$ & 1 & 1 & 1 & 1 \\
+ $Z = (0,0,\pi)$ & 0 & 0 & 2 & 2 \\
+ $M = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},0)$ & 1 & 1 & 1 & 1 \\
+ $A = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},\pi)$ & 0 & 0 & 2 & 2 \\ 
+ $X = (\frac{\pi}{\sqrt{2}},0,0)$ & 2 & - & 2 & - \\
+ $R = (\frac{\pi}{\sqrt{2}},0,\pi)$ & 0 & - & 4 & -
+ \end{tabular}
+ \caption{The values of the symmetry indicator $n$ at various high symmetry points. (16-band inversion symmetric trivial model with intra-cell hoppings only), $z_8 = 0 \mod 8$.} \label{SymmetryIndicatortriv1}
+ \end{table}
+ 
+\begin{table}[h]
+ \begin{tabular}{c|cccc}
+   & $n(E_{\frac{1}{2}g})$ & $n(E_{\frac{3}{2}g})$ & $n(E_{\frac{1}{2}u})$ & $n(E_{\frac{3}{2}u})$  \\
+ \hline 
+ $\Gamma = (0,0,0)$ & 1 & 1 & 1 & 1 \\
+ $Z = (0,0,\pi)$ & 0 & 0 & 2 & 2 \\
+ $M = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},0)$ & 1 & 1 & 1 & 1 \\
+ $A = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},\pi)$ & 0 & 0 & 2 & 2 \\ 
+ $X = (\frac{\pi}{\sqrt{2}},0,0)$ & 2 & - & 2 & - \\
+ $R = (\frac{\pi}{\sqrt{2}},0,\pi)$ & 4 & - & 0 & -
+ \end{tabular}
+ \caption{The values of the symmetry indicator $n$ at various high symmetry points. (16-band inversion symmetric trivial model with inter-cell hoppings only), $z_8 = 0 \mod 8$.} \label{SymmetryIndicatortriv2}
+ \end{table}
+ 
+  \begin{table}[h]
+ \begin{tabular}{c|cccc}
+   & $n(E_{\frac{1}{2}g})$ & $n(E_{\frac{3}{2}g})$ & $n(E_{\frac{1}{2}u})$ & $n(E_{\frac{3}{2}u})$  \\
+ \hline 
+ $\Gamma = (0,0,0)$ & 1 & 1 & 1 & 1 \\
+ $Z = (0,0,\pi)$ & 0 & 0 & 2 & 2 \\
+ $M = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},0)$ & 1 & 1 & 1 & 1 \\
+ $A = (\frac{\pi}{\sqrt{2}},\frac{\pi}{\sqrt{2}},\pi)$ & 2 & 2 & 0 & 0 \\ 
+ $X = (\frac{\pi}{\sqrt{2}},0,0)$ & 2 & - & 2 & - \\
+ $R = (\frac{\pi}{\sqrt{2}},0,\pi)$ & 2 & - & 2 & -
+ \end{tabular}
+ \caption{The values of the symmetry indicator $n$ at various high symmetry points. (16-band inversion symmetric model with half translated $T_{1/2}^{-1} \delta H_{xy} T_{1/2}$ ), $z_8 = 0 \mod 8$.} \label{SymmetryIndicatorTranslated}
+ \end{table}
+ 
+ % Maybe uncomment this table below
+ 
+ %\begin{table}[h]
+ %\begin{tabular}{c|cccc}
+ %  & $n(E_{\frac{1}{2}g})$ & $n(E_{\frac{3}{2}g})$ & $n(E_{\frac{1}{2}u})$ & $n(E_{\frac{3}{2}u})$  \\
+ %\hline 
+ %$\Gamma = (0,0,0)$ & 1 & 1 & 0 & 0 \\
+ %$Z = (0,0,\pi)$ & 0 & 0 & 1 & 1 \\
+ %$M = (\pi,\pi,0)$ & 0 & 0 & 1 & 1 \\
+ %$A = (\pi,\pi,\pi)$ & 0 & 0 & 1 & 1 \\
+ %$X = (\pi,0,0)$ & 1 & - & 1 & - \\
+ %$R = (\pi,0,\pi)$ & 0 & - & 2 & -
+ %\end{tabular}
+ %\caption{The values of the symmetry indicator $n$ at various high symmetry points.(8-band inversion symmetric model eq(\ref{eq:inversionXY}))} \label{SymmetryIndicator2}
+ %\end{table}
+ 
+ % Maybe uncomment this table below
+ 
+ %\begin{table}[h]
+ %\label{table:shift_origin}
+ %\begin{tabular}{c|cccc}
+ %& $n(E_{\frac{1}{2}g})$ & $n(E_{\frac{3}{2}g})$ & $n(E_{\frac{1}{2}u})$ & $n(E_{\frac{3}{2}u})$  \\
+ %\hline 
+ %$\Gamma = (0,0,0)$ & 1 & 1 & 0 & 0 \\
+ %$Z = (0,0,\pi)$ & 0 & 0 & 1 & 1 \\
+ %$M = (\pi,\pi,0)$ & 0 & 0 & 1 & 1 \\
+ %$A = (\pi,\pi,\pi)$ & 0 & 0 & 1 & 1 \\
+ %$X = (\pi,0,0)$ & 1 & - & 1 & - \\
+ %$R = (\pi,0,\pi)$ & 2 & - & 0 & -
+ %\end{tabular}
+ %\caption{The values of the symmetry indicator $n$ at various high symmetry points.(8-band inversion symmetric model with shifted origin eq(\ref{eq:shift_origin}))} \label{SymmetryIndicator2}
+ %\end{table}
+ 
+ % COMMENT: Somehow the z_8 for 8 bands models are weird, don't fit into 0 or 4 mod 8 picture, they are odd numbered, but the folding picture adds up for the 16 band case.
+ 
+ %\begin{table}[h]
+ %\label{table:c4breaking}
+ %\begin{tabular}{c|cccc}
+ %& $n(E_{g})$  & $n(E_{u})$   \\
+ %\hline 
+ %$\Gamma = (0,0,0)$ & 2 & 0  \\
+ %$Z = (0,0,\pi)$ & 0 & 2 \\
+ %$M = (\pi,\pi,0)$ & 0 & 2 \\
+ %$A = (\pi,\pi,\pi)$ & 0 & 2 \\
+ %$X = (\pi,0,0)$ & 1 & 1 \\
+ %$R = (\pi,0,\pi)$ & 0 & 2 \\
+ %$X' = (0,\pi,0)$ & 1 & 1 \\
+ %$R = (0,\pi,\pi)$ & 0 & 2
+ %\end{tabular}
+ %\caption{Number of irreducible representations at various high symmetry points.(8-band inversion symmetric, $C_4$ breaking)}
+ %\end{table}
+
+{\color{red}- Weak TI phase for dHxy with Tx and Ty symmetry, i.e. with boundary surface states.
+\paragraph{Stacked Weak Ti and Symmetry Indicator}
+(Picture as two superposed WTIs in x and y direction using generalization of Wieder, Lin, and Bradlyn.  Diagnose topology with $\{ z_8 | z_4 z_2 \}$ symmetry indicators for $\phi = (\phi_1, \phi_2) = (0,0)$ and $(\pi,\pi)$ where symmetry indicators given by Zhida Song for space group 83 P4/m in \cite{MappingSymmetryTopology})
+
+- Topological phase by decomposing the 8 helical pairs per unit cell into two groups of 4. One group of 4 is gapped within a cell, the other group of 4 is gapped between cells. This works for dHxy and dHz.
+
+- C4 and TR protected topology? (Spectral flow of C4 along some axes: winding of C4 eigenvalues; Wannier centers)}
+
+
+%\subsection{Coexisting density wave and Weyl semimetallic phase(trivial phase)}
+
+%Now we will include the first and second nearest neighbour hopping terms $\hat{H_2}$ and $\hat{H}_3$ . There exist a density wave backscattering term
+
+%\begin{equation}
+%    \delta H_{tri} = m\sigma_x\tau_z
+%\end{equation}
+%It doesn't couple different spins which means this term will not give a immediate gap. It will separate the Weyl points in $xy-$plane as the strength of this mass term is increasing. Eventually the Weyl points will reach the boundary of BZ and form a flat band nodal line annihilate with each other. It is possible that density wave can coexist with Weyl points. 
+
+%We can also introduce a direct gap 
+%\begin{equation}
+%    \delta H_z = \delta H_{z,-} - \delta H_{z,+} = \frac{1}{2}\sigma_y\mu_z\tau_x(s_x+s_y)+\frac{1}{2}\sigma_y\tau_x(s_x-s_y)
+%\end{equation}
+
+%Put back 1st and 2nd neighbor hoppings here, but with relatively weak dHxy (intra and/or inter), and the trivial dHz. Topological dHz gives immediate gap.
+
+%Nodal line for trivial dHz. Nodal line in 3+1 space, kxkykz and the strength of dHz. Off high symmetry points, so no TR symmetry => class A. Nodal line surrounded by a 2-sphere in 4-space, c.f. a line link a surface in 4D. Chern number of 2-sphere characterizes nodal line?
+
+%2-sphere: take the equator ($\theta=\pi/2$) to be at the particular strength of dHz inside BZ with kykz winding once around the nodal line, which is parallel to kx. 
+
+%Describe motion of Weyl points splitting.
+
+%For strong dHxy or dHz, it becomes gapped.
+
+
+
+%Write about Dirac Semimetal (unstable) model with T, I, and C4z (Tx and Ty too, but dependent on SOC)
+
+
